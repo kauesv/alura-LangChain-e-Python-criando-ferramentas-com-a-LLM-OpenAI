@@ -1,0 +1,5 @@
+#env
+*.env
+
+langchain
+main_teste.py
