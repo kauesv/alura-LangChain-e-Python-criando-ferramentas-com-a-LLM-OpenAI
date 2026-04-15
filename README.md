@@ -1,0 +1,1 @@
+# LangChain-e-Python-criando-ferramentas-com-a-LLM-OpenAI
