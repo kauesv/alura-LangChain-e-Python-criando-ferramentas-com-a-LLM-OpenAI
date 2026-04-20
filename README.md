@@ -1,4 +1,8 @@
-# LangChain e Python: criando ferramentas com a LLM OpenAI
+# 📚 Bem-vindo ao repositório do curso da Alura LangChain e Python: criando ferramentas com a LLM OpenAI
+
+Nesse repositório onde compartilho o resultado de cursos e aulas que participei.
+
+---
 
 ## ⚙️ Guia de Configuração
 
@@ -31,3 +35,13 @@ Crie ou edite o arquivo `.env` adicionando sua chave de API da OpenAI:
 ```bash
 OPENAI_API_KEY="SUA_CHAVE_DE_API"
 ```
+
+## Contato
+
+Para mais informações ou para discutir qualquer um dos repositórios, sinta-se à vontade para entrar em contato:
+
+- **Email:** [kauesousavieira534@gmail.com](mailto:kauesousavieira534@gmail.com)
+- **LinkedIn:** [LinkedIn](https://www.linkedin.com/in/kaue-sousa-vieira/)
+
+---
+Obrigado por visitar meu repositório!
