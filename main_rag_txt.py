@@ -23,22 +23,15 @@ modelo = ChatOpenAI(
 
 embeddings = OpenAIEmbeddings()
 # Carrega os arquivos
-arquivos = [
-    "documentos/GTB_standard_Nov23.pdf",
-    "documentos/GTB_gold_Nov23.pdf",
-    "documentos/GTB_platinum_Nov23.pdf"
-]
-
-documentos = sum(
-    [
-        PyPDFLoader(arquivo).load() for arquivo in arquivos
-    ], []
-)
+documento = TextLoader(
+    fr"D:\Meus Documentos\Documentos\projetos\alura\alura-LangChain-e-Python-criando-ferramentas-com-a-LLM-OpenAI\documentos\GTB_gold_Nov23.txt",
+    encoding="utf-8"
+).load()
 
 # Divide textos
 pedacos = RecursiveCharacterTextSplitter(
     chunk_size=1000, chunk_overlap=100
-).split_documents(documentos)
+).split_documents(documento)
 
 # Recupera os dados que vão ser usados pelo modelo, base de dados vetorial
 dados_recuperados = FAISS.from_documents(

@@ -51,30 +51,38 @@ class Estado(TypedDict):
     destino: Rota
     resposta:str
 
+# NO de entrada para o orquestrador, que vai definir para qual resposta deve ir
 async def no_roteador(estado: Estado, config=RunnableConfig):
     return {"destino": await roteador.ainvoke({"query":estado["query"]}, config)} 
 
+# No do assistente
 async def no_praia(estado: Estado, config=RunnableConfig):
     return {"resposta": await cadeia_praia.ainvoke({"query":estado["query"]}, config)} 
 
+# No do assistente
 async def no_montanha(estado: Estado, config=RunnableConfig):
     return {"resposta": await cadeia_montanha.ainvoke({"query":estado["query"]}, config)} 
 
+# metodo de escolha
 def escolher_no(estado:Estado)->Literal["praia", "montanha"]:
     return "praia" if estado["destino"]["destino"] == "praia" else "montanha"
 
 grafo = StateGraph(Estado)
+#defini os nos
 grafo.add_node("rotear", no_roteador)
 grafo.add_node("praia", no_praia)
 grafo.add_node("montanha", no_montanha)
 
+#regras usadas para inicio e fim e quais nos usar
 grafo.add_edge(START, "rotear")
 grafo.add_conditional_edges("rotear", escolher_no)
 grafo.add_edge("praia", END)
 grafo.add_edge("montanha", END)
 
+#compila as configurações
 app = grafo.compile()
 
+# executa o processo em assincrona
 async def main():
     resposta = await app.ainvoke(
         {"query": "Quero escalar montanhas radicais no sul do Brasil"}

@@ -1,0 +1,19 @@
+Prompt Templates
+Definem regras para o LLM gerar respostas consistentes: recebem variáveis, estruturam o contexto e orientam a saída. Padronizam interações, 
+garantem previsibilidade e facilitam a validação do comportamento.
+
+Cadeia (Chain)
+No LangChain, uma chain é a composição de etapas onde a saída de um componente vira entrada do próximo. 
+Pode ser linear ou mais flexível (com LCEL), combinando prompts, LLMs e ferramentas em fluxos reutilizáveis.
+
+Memória
+No LangChain com LCEL, a memória pode ser feita com estruturas simples, como um dicionário que associa um ID de sessão a uma lista de ações. 
+Isso mantém contexto, rastreia interações e permite reutilizar informações no fluxo.
+
+LangGraph
+No LangGraph, o fluxo é um grafo com cadeias separadas, permitindo gerenciar memória e usar recursos sob demanda. 
+A escolha de templates ou agentes depende de regras e roteamentos definidos, tornando a execução mais eficiente e adaptativa.
+
+RAG (Recuperação Aumentada Generativa)
+Combina o modelo com dados externos: documentos são carregados (ex: TextLoader), divididos em partes menores (chunk_size e chunk_overlap), transformados em vetores e armazenados (ex: FAISS). 
+Na consulta, um retriever busca os trechos mais relevantes (top-k ajustável) e o modelo usa esse contexto para gerar respostas mais precisas.
